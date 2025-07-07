@@ -22,6 +22,10 @@ import {
 import Link from "next/link"
 import Image from "next/image"
 import {useEffect, useState} from "react"
+import { experiences } from "@/data/experiences";
+import { projects } from "@/data/projects";
+import { certificates } from "@/data/certificates";
+import { getTechColor, skillsData } from "@/data/tech-skills"
 
 export default function ResumeLanding() {
   const [scrollY, setScrollY] = useState(0)
@@ -32,329 +36,11 @@ export default function ResumeLanding() {
   const [hoveredCertificate, setHoveredCertificate] = useState<number | null>(null)
   const [zoomedCertificate, setZoomedCertificate] = useState<any>(null)
 
-  const aboutTexts = [
-    "I'm a passionate full-stack developer with over 5 years of experience creating digital solutions that make a difference. I specialize in modern web technologies and have a keen eye for user experience design.",
-    "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community through blog posts and speaking engagements.",
-    "I believe in writing clean, maintainable code and creating applications that not only function well but also provide exceptional user experiences.",
-  ]
-
-  const experiences = [
-    {
-      title: "Graduate Teaching Assistant",
-      company: "University of Maryland",
-      period: "Jan 2025 - May 2025",
-      location: "College Park, MD",
-      technologies: ["JUnit", "Selenium", "Linux", "Spring Boot", "Gradle", "Mockito", "JMockit"],
-      responsibilities: [
-        "Teaching Assistant for Software Testing & Maintenance under Technology Director of Fraunhofer, mentoring 50+ students in advanced debugging and QA.",
-        "Evaluated & Designed assignments and exams, providing detailed and constructive feedback to improve student outcomes.",
-        "Assisted the professor in managing and enhancing course materials while streamlining communication, ensuring seamless access and fostering a collaborative learning environment.",
-      ],
-      color: "from-purple-600/20 to-pink-600/20",
-      textColor: "text-purple-400",
-      borderColor: "border-purple-500",
-      bgColor: "bg-purple-500/10",
-    },
-    {
-      title: "Graduate Teaching Assistant",
-      company: "University of Maryland",
-      period: "Aug 2024 - Dec 2024",
-      location: "College Park, MD",
-            technologies: [
-                "Java",
-                "SpringBoot",
-                "Python",
-                "AWS",
-                "JUnit",
-                "Node.js",
-                "React.js",
-                "REST APIs",
-                "Design Patterns",
-                "Git",
-            ],
-      responsibilities: [
-        "Teaching Assistant for Software Design & Implementation under Architecture Division Chief at the US Army, mentoring 65 students in system design, design patterns and scalable software practices.",
-        "Delivered a specialized lecture on SOLID principles, demonstrating advanced design best practices for creating robust, maintainable software",
-        "Managed student software projects end-to-end and designed course examinations, providing targeted technical guidance and accountability to ensure high-quality outcomes.",
-      ],
-      color: "from-blue-600/20 to-cyan-600/20",
-      textColor: "text-blue-400",
-      borderColor: "border-blue-500",
-      bgColor: "bg-blue-500/10",
-    },
-    {
-      title: "Software-Engineer Full Stack Intern",
-      company: "Nix, Inc.",
-      period: "Jun 2024 - Aug 2024",
-      location: "Wyoming, USA(Remote)",
-      description:
-          "Worked as a Lead Full Stack Intern in revamping a cloud based application",
-      responsibilities: [
-        "Led the architecture, development, and deployment of a cloud-native React-Node-Snowflake application leveraging AWS services, achieving an 84% increase in user adoption and securing the initial customer base.",
-        "Architected and optimized the database schema, cutting query response time by 40%, for high traffic demands.",
-        "Implemented an end-to-end secure payment portal with Stripe and JWT-based authentication, driving an 80% surge in paid user growth.",
-      ],
-            technologies: [
-                "Node.js",
-                "Stripe API",
-                "AWS",
-                "Snowflake",
-                "React.js",
-                "Tailwind Css",
-                "Git",
-                "GitHub actions",
-                "HTML/CSS",
-            ],
-      achievements: [
-        "Promoted to Backend Lead Intern at Nix after just one month, recognized for outstanding performance and technical leadership.",
-      ],
-      color: "from-purple-600/20 to-pink-600/20",
-      textColor: "text-purple-400",
-      borderColor: "border-purple-500",
-      bgColor: "bg-purple-500/10",
-    },
-    {
-      title: "Consultant",
-      company: "Intellect Design Arena",
-      period: "Oct 2019 - Aug 2023",
-      location: "New Delhi, India",
-      description:
-          "Lead a team of 4 developers in building scalable web applications using Spring Boot, Java, and jQuery.",
-      responsibilities: [
-        "Spearheaded and developed revenue model transformation for e-marketplace(GeM) using Spring Boot & Java, driving 80% YoY growth, contributing $5 Billion in annual revenue.",
-        "Engineered a Payment Status Scheduler with Cron jobs and the JEXL engine, reducing processing times from 60 to 10 minutes for over 30,000 daily transactions, significantly enhancing system efficiency and agility",
-        "Led and executed the Uber integration for government cab procurement, reducing monthly operational cost by 40% (∼$15,000) by applying HLD/LLD principles in Agile environment.",
-        "Diagnosed and resolved critical garbage collection issues using JProfiler, Heap Analysis, and Dynatrace, reducing server instances by 25% (4 to 3) and lowering memory usage by 30GB, enhancing application performance, and, cutting infrastructure costs.",
-      ],
-            technologies: [
-                "MySQL",
-                "JProfiler",
-                "Java",
-                "Spring Boot",
-                "jUnit",
-                "Sonar",
-                "jQuery",
-                "Jira",
-                "Git",
-                "JEXL",
-                "AWS",
-                "Microservices",
-                "FreeMarker",
-            ],
-      achievements: [
-        "Recipient of the organization’s most coveted Intellect Chairman’s Team Excellence Award in Delivery Excellence, recognized for driving an 89% YoY GMV increase to $25B on GeM.",
-        "Honored with Intellect’s “Going Extra Mile” (GEM) Award for surpassing performance targets, demonstrating unwavering dedication to project success, and consistently delivering exceptional results.",
-        "Fast-tracked from Associate Consultant to Consultant for outstanding performance, strategic innovation, and high-impact contributions.",
-        "Two-time SPOT Award recipient for exceptional agility, innovation, and commitment to driving successful project outcomes.",
-        "Honored with Intellect’s Rising Star Award as a newcomer, recognized for outstanding early contributions, rapid skill acquisition, and impactful performance.",
-      ],
-      color: "from-blue-600/20 to-cyan-600/20",
-      textColor: "text-blue-400",
-      borderColor: "border-blue-500",
-      bgColor: "bg-blue-500/10",
-    },
-    {
-      title: "Associate Software Engineer",
-      company: "Sunrich Technologies Pvt. Ltd.",
-      period: "Dec 2018 - Sept 2019",
-      location: "Mumbai, India",
-            technologies: [
-                "Jasper Reports",
-                "Spring Boot",
-                "Java",
-                "AWS",
-                "jUnit",
-                "Angular",
-                "JavaScript",
-                "Jira",
-                "Git",
-                "Maven",
-                "MySQL",
-            ],
-      responsibilities: [
-        "Early member of the core team that architected and developed a shipping logistics web app with microservices and cloud solutions, achieving monthly operational savings of ∼$12,000 and improving scalability.",
-        "At just one year of experience as the team’s youngest member, engineered a scalable, ACID-compliant database architecture that drove a 40% boost in operational efficiency.",
-        "Engineered a reporting functionality using Jasper Reports for multi-format report generation and AWS S3 storage, reducing report generation from 20 mins to 5 mins.",
-      ],
-      color: "from-purple-600/20 to-pink-600/20",
-      textColor: "text-purple-400",
-      borderColor: "border-purple-500",
-      bgColor: "bg-purple-500/10",
-    },
-    {
-      title: "Project Trainee",
-      company: "Systems Plus",
-      period: "Nov 2017 - Dec 2018",
-      location: "Pune, India",
-      responsibilities: [
-        "Developed a robust report generation module for RBI’s (Reserve Bank of India) securities auctions, handling heavy, sensitive, and complex data, cutting annual operational cost by 30%.",
-        "Crafted and seamlessly integrated a performance-optimized stored procedure, resulting in a 40% reduction in data retrieval time from an external ERP system.",
-      ],
-      technologies: ["Oracle 11g", "Oracle ADF", "Java", "Jasper Reports", "jUnit", "Git"],
-      achievements: [
-        "Earned “Star of the Month” for consistently exceeding performance targets, driving innovative solutions, and significantly boosting team productivity",
-      ],
-      color: "from-blue-600/20 to-cyan-600/20",
-      textColor: "text-blue-400",
-      borderColor: "border-blue-500",
-      bgColor: "bg-blue-500/10",
-        },
-  ]
-
-    // Updated certificates data with proper image URLs
-    const certificates = [
-        {
-            id: 1,
-            title: "AWS Solutions Architect Associate",
-            issuer: "Amazon Web Services",
-            date: "Jun 2025",
-            validUntil: "Jun 2028",
-            imageUrl: "/images/certificates/aws-certificate.png",
-            verificationUrl: "https://www.credly.com/badges/3ce92f5d-e303-426c-b987-4819e9b97d29",
-        },
-        {
-            id: 2,
-            title: "PL/SQL",
-            issuer: "Udemy",
-            date: "May 2021",
-            validUntil: " - ",
-            imageUrl: "/images/certificates/pl-sql.png",
-            verificationUrl: "https://www.udemy.com/certificate/UC-5e1af506-45c7-4e0d-bc22-798ee25f6610/",
-        },
-        {
-            id: 3,
-            title: "JavaScript",
-            issuer: "Udemy",
-            date: "Jul 2020",
-            validUntil: " - ",
-            imageUrl: "/images/certificates/javascript.png",
-            verificationUrl: "https://www.udemy.com/certificate/UC-427c3f0f-6d4f-4338-bf9b-7e119548a458/",
-        },
-        {
-            id: 4,
-            title: "Spring & Hibernate",
-            issuer: "Udemy",
-            date: "Sep 2024",
-            validUntil: " - ",
-            imageUrl: "/images/certificates/spring.png",
-            verificationUrl: "https://www.udemy.com/certificate/UC-IDNIF94P/",
-        },
-        {
-            id: 5,
-            title: "Advance Java",
-            issuer: "HCL",
-            date: "Apr 2016",
-            validUntil: " - ",
-            imageUrl: "/images/certificates/ad java_1.jpg",
-        },
-        {
-            id: 6,
-            title: "C & C++",
-            issuer: "HCL",
-            date: "Mar 2016",
-            validUntil: " - ",
-            imageUrl: "/images/certificates/c&c++_1.jpg",
-        },
-        {
-            id: 7,
-            title: "Core Java",
-            issuer: "HCL",
-            date: "Jan 2016",
-            validUntil: " - ",
-            imageUrl: "/images/certificates/core java_1.jpg",
-        },
-    ]
-
-    // Projects data with JSON structure
-    const projects = [
-        {
-            id: 1,
-            title: "E-commerce Platform",
-            description:
-                "A full-stack e-commerce solution built with Next.js, TypeScript, and Stripe integration for seamless online shopping experience.",
-            longDescription:
-                "Complete e-commerce platform featuring user authentication, product catalog, shopping cart, payment processing, order management, and admin dashboard. Built with modern web technologies for optimal performance and user experience.",
-            imageUrl: "/images/projects/ecommerce-platform.jpg",
-            technologies: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind CSS", "Prisma"],
-            githubUrl: "https://github.com/yourusername/ecommerce-platform",
-            liveUrl: "https://ecommerce-demo.vercel.app",
-            featured: true,
-            category: "Full Stack",
-            completedDate: "Dec 2024",
-        },
-        {
-            id: 2,
-            title: "Task Management App",
-            description:
-                "A collaborative task management application with real-time updates and team collaboration features.",
-            longDescription:
-                "Real-time collaborative task management system with drag-and-drop functionality, team workspaces, deadline tracking, file attachments, and comprehensive reporting dashboard.",
-            imageUrl: "/images/projects/task-management.jpg",
-            technologies: ["React", "Node.js", "Socket.io", "MongoDB", "Express", "Material-UI"],
-            githubUrl: "https://github.com/yourusername/task-manager",
-            liveUrl: "https://taskmanager-demo.vercel.app",
-            featured: true,
-            category: "Full Stack",
-            completedDate: "Nov 2024",
-        },
-        {
-            id: 3,
-            title: "Weather Dashboard",
-            description: "A responsive weather dashboard with location-based forecasts and interactive charts.",
-            longDescription:
-                "Comprehensive weather application featuring current conditions, 7-day forecasts, interactive maps, weather alerts, and detailed analytics with beautiful data visualizations.",
-            imageUrl: "/images/projects/weather-dashboard.jpg",
-            technologies: ["Vue.js", "Chart.js", "OpenWeather API", "Vuetify", "PWA"],
-            githubUrl: "https://github.com/yourusername/weather-dashboard",
-            liveUrl: "https://weather-dashboard-demo.vercel.app",
-            featured: true,
-            category: "Frontend",
-            completedDate: "Oct 2024",
-        },
-        {
-            id: 4,
-            title: "AI Chat Application",
-            description:
-                "Intelligent chatbot application powered by OpenAI API with conversation history and context awareness.",
-            longDescription:
-                "Advanced AI-powered chat application with natural language processing, conversation memory, file uploads, code syntax highlighting, and customizable AI personalities.",
-            imageUrl: "/images/projects/ai-chat-app.jpg",
-            technologies: ["React", "OpenAI API", "Node.js", "WebSocket", "Redis", "Docker"],
-            githubUrl: "https://github.com/yourusername/ai-chat-app",
-            liveUrl: "https://ai-chat-demo.vercel.app",
-            featured: false,
-            category: "AI/ML",
-            completedDate: "Sep 2024",
-        },
-        {
-            id: 5,
-            title: "Portfolio Website",
-            description: "Personal portfolio website showcasing projects and skills with modern design and animations.",
-            longDescription:
-                "Responsive portfolio website built with modern web technologies, featuring smooth animations, dark/light mode, contact forms, and optimized performance.",
-            imageUrl: "/images/projects/portfolio-website.jpg",
-            technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript", "Vercel"],
-            githubUrl: "https://github.com/yourusername/portfolio",
-            liveUrl: "https://yourportfolio.vercel.app",
-            featured: false,
-            category: "Frontend",
-            completedDate: "Aug 2024",
-        },
-        {
-            id: 6,
-            title: "Expense Tracker",
-            description:
-                "Personal finance management app with budget tracking, expense categorization, and financial insights.",
-            longDescription:
-                "Comprehensive expense tracking application with budget planning, category-wise expense analysis, recurring transaction management, and detailed financial reports with charts.",
-            imageUrl: "/images/projects/expense-tracker.jpg",
-            technologies: ["React Native", "Firebase", "Chart.js", "AsyncStorage", "Expo"],
-            githubUrl: "https://github.com/yourusername/expense-tracker",
-            liveUrl: null, // Mobile app - no live URL
-            featured: false,
-            category: "Mobile",
-            completedDate: "Jul 2024",
-        },
+    const aboutTexts = [
+        "I'm an impact-driven Software Engineer with over 5 years of experience building scalable digital solutions across finance, e-commerce, and logistics. Specializing in full-stack development, cloud infrastructure, database architecture, and system optimization, I consistently deliver technologies that enhance performance, increase efficiency, and reduce operational costs. \n",
+        "I recently completed my Master of Engineering in Software Engineering with a Graduate Certification in Cloud Engineering from the University of Maryland, where I honed my skills in modern web technologies and user experience design. \n",
+        "Outside of coding, I enjoy exploring new technologies, contributing to open-source projects, and actively engaging with the developer community through blog posts and speaking engagements. \n",
+        "I believe in writing clean, maintainable code and creating applications that not only function effectively but also deliver exceptional user experiences. I am committed to continuous learning and passionate about using technology to solve real-world problems. \n",
     ]
 
     useEffect(() => {
@@ -543,7 +229,7 @@ export default function ResumeLanding() {
     }
   }
 
-    const handleZoomCertificate = (certificate: any) => {
+    const handleZoomCertificate = (certificate: never) => {
         setZoomedCertificate(certificate)
     }
 
@@ -847,7 +533,7 @@ export default function ResumeLanding() {
               <h3 className="text-3xl font-bold mb-6 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                 About Me
               </h3>
-              <div className="space-y-4 text-gray-300 mb-12">
+              <div className="space-y-4 text-white-300 mb-12">
                 {aboutTextVisible ? (
                     <p className="whitespace-pre-line leading-relaxed">{typingText}</p>
                 ) : (
@@ -1085,15 +771,16 @@ export default function ResumeLanding() {
                                                           Technologies
                                                       </h5>
                                                       <div className="flex flex-wrap gap-2">
-                                                          {exp.technologies.slice(0, 4).map((tech, techIndex) => (
-                                                              <Badge
-                                                                  key={techIndex}
-                                                                  className={`${exp.bgColor} ${exp.textColor.replace("-400", "-200")} border-${exp.textColor.replace("text-", "").replace("-400", "-500/30")} text-xs`}
-                                                              >
+                                                            {(hoveredExperience === index
+                                                                    ? exp.technologies
+                                                                    : exp.technologies.slice(0, 4)
+                                                            ).map((tech, techIndex) => (
+                                                                <Badge key={techIndex} className={`${getTechColor(tech)} text-xs`}>
                                                                   {tech}
                                                               </Badge>
                                                           ))}
-                                                          {exp.technologies.length > 4 && (
+
+                                                            {hoveredExperience !== index && exp.technologies.length > 4 && (
                                                               <Badge
                                                                   className="bg-gray-500/20 text-gray-300 border-gray-500/30 text-xs">
                                                                   +{exp.technologies.length - 4} more
@@ -1169,26 +856,7 @@ export default function ResumeLanding() {
                                                           </ul>
                                                       </div>
                                                   )}
-                                              </div>
-
-                                              {/* All Technologies (shown on hover) - Only render if technologies exist */}
-                                              {hoveredExperience === index && exp.technologies && exp.technologies.length > 0 && (
-                                                  <div className="mt-6 pt-6 border-t border-white/10">
-                                                      <h5 className="font-semibold text-white mb-3 text-sm uppercase tracking-wide">
-                                                          All Technologies & Tools
-                                                      </h5>
-                                                      <div className="flex flex-wrap gap-2">
-                                                          {exp.technologies.map((tech, techIndex) => (
-                                                              <Badge
-                                                                  key={techIndex}
-                                                                  className={`${exp.bgColor} ${exp.textColor.replace("-400", "-200")} border-${exp.textColor.replace("text-", "").replace("-400", "-500/30")} text-xs hover:scale-105 transition-transform`}
-                                                              >
-                                                                  {tech}
-                                                              </Badge>
-                                                          ))}
-                                                      </div>
                                                   </div>
-                                              )}
                                           </div>
                                       </div>
                                   </CardContent>
@@ -1212,189 +880,24 @@ export default function ResumeLanding() {
                           </p>
                       </div>
 
-                      <div className="grid md:grid-cols-3 gap-8">
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+                            {skillsData.map((skillCategory, index) => (
                           <Card
-                              className="bg-black/20 border-white/10 backdrop-blur-sm hover:bg-black/40 transition-all duration-300">
+                                    key={index}
+                                    className="bg-black/20 border-white/10 backdrop-blur-sm hover:bg-black/40 transition-all duration-300"
+                                >
                               <CardContent className="p-6">
-                                  <h4 className="font-semibold mb-4 text-white">Frontend</h4>
+                                        <h4 className="font-semibold mb-4 text-white">{skillCategory.category}</h4>
                                   <div className="flex flex-wrap gap-2">
-                                      <Badge variant="secondary"
-                                             className="bg-purple-500/20 text-purple-200 border-purple-500/30">
-                                          React
+                                            {skillCategory.technologies.map((tech, techIndex) => (
+                                                <Badge key={techIndex} variant="secondary" className={skillCategory.color}>
+                                                    {tech}
                                       </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-purple-500/20 text-purple-200 border-purple-500/30">
-                                          jQuery
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-purple-500/20 text-purple-200 border-purple-500/30">
-                                          TypeScript
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-purple-500/20 text-purple-200 border-purple-500/30">
-                                          JavaScript
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-purple-500/20 text-purple-200 border-purple-500/30">
-                                          HTML/CSS
-                                      </Badge>
+                                            ))}
                                   </div>
                               </CardContent>
                           </Card>
-
-                          <Card
-                              className="bg-black/20 border-white/10 backdrop-blur-sm hover:bg-black/40 transition-all duration-300">
-                              <CardContent className="p-6">
-                                  <h4 className="font-semibold mb-4 text-white">Backend</h4>
-                                  <div className="flex flex-wrap gap-2">
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Java
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Spring Boot
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          JUnit
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Hibernate
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Node.js
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          SQL
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          MySQL
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Oracle 11g
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          PL/SQL
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          NoSQL
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          PostgresSQL
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          MongoDB
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Python
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          AWS
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Jenkins
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Docker
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Azure
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-pink-500/20 text-pink-200 border-pink-500/30">
-                                          Kubernetes
-                                      </Badge>
-                                  </div>
-                              </CardContent>
-                          </Card>
-
-                          <Card
-                              className="bg-black/20 border-white/10 backdrop-blur-sm hover:bg-black/40 transition-all duration-300">
-                              <CardContent className="p-6">
-                                  <h4 className="font-semibold mb-4 text-white">Tools & Others</h4>
-                                  <div className="flex flex-wrap gap-2">
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Database Architecture & Design
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Dynatrace
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Maven
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          RESTful APIs
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Design Patterns
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Jira
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          BitBucket
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Postman
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Ant
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Oracle ADF
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Jasper Reports
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Freemarker
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Git
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Agile
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          MVC
-                                      </Badge>
-                                      <Badge variant="secondary"
-                                             className="bg-blue-500/20 text-blue-200 border-blue-500/30">
-                                          Microservices
-                                      </Badge>
-                                  </div>
-                              </CardContent>
-                          </Card>
+                            ))}
                       </div>
                   </div>
               </section>
@@ -1620,24 +1123,82 @@ export default function ResumeLanding() {
                               <CardContent className="p-6">
                                             <div className="flex justify-between items-start mb-2">
                                                 <h4 className="font-semibold text-lg text-white">{project.title}</h4>
-                                                <span className="text-xs text-gray-400">{project.completedDate}</span>
                                             </div>
 
-                                            <p className="text-gray-300 text-sm mb-4 line-clamp-2">{project.description}</p>
+                                            <p className="text-gray-300 text-sm mb-4">{project.description}</p>
 
-                                        {/* Show All Technologies */}
+                                        {/* Flexible Technology Display */}
                                   <div className="flex flex-wrap gap-2 mb-4">
-                                            {project.technologies.map((tech, index) => (
-                                                    <Badge key={index} variant="outline" className="text-xs border-purple-500/30 text-purple-200">
+                                            {/* Show main technologies if no repositories, otherwise show combined unique technologies */}
+                                            {(() => {
+                                                let techsToShow = []
+
+                                                if (project.repositories) {
+                                                    // Combine all technologies from repositories and main project, remove duplicates
+                                                    const frontendTechs = project.repositories.frontend?.technologies || []
+                                                    const backendTechs = project.repositories.backend?.technologies || []
+                                                    const mainTechs = project.technologies || []
+
+                                                    techsToShow = [...new Set([...mainTechs, ...frontendTechs, ...backendTechs])]
+                                                } else {
+                                                    // Use main technologies for single repository projects
+                                                    techsToShow = project.technologies || []
+                                                }
+
+                                                return techsToShow.map((tech, index) => (
+                                                    <Badge key={index} variant="outline" className={`text-xs ${getTechColor(tech)}`}>
                                                         {tech}
                                       </Badge>
-                                                ))}
+                                                ))
+                                            })()}
                                   </div>
+
+                                        {/* Flexible Button Rendering */}
                                   <div className="flex gap-2">
+                                            {project.repositories ? (
+                                                // Multi-repository project
+                                                <>
+                                                    {project.repositories.frontend && (
+                                                        <Button
+                                                            size="sm"
+                                                            variant="outline"
+                                                            className="border-white/20 text-white bg-transparent flex-1"
+                                                            asChild
+                                                        >
+                                                            <Link
+                                                                href={project.repositories.frontend.url || "#"}
+                                                                target="_blank"
+                                                                className="flex items-center justify-center"
+                                                            >
+                                                                <Github className="w-3 h-3 mr-1" />
+                                                                Frontend
+                                                            </Link>
+                                                        </Button>
+                                                    )}
+                                                    {project.repositories.backend && (
+                                                        <Button
+                                                            size="sm"
+                                                            variant="outline"
+                                                            className="border-white/20 text-white bg-transparent flex-1"
+                                                            asChild
+                                                        >
+                                                            <Link
+                                                                href={project.repositories.backend.url || "#"}
+                                                                target="_blank"
+                                                                className="flex items-center justify-center"
+                                                            >
+                                                                <Github className="w-3 h-3 mr-1" />
+                                                                Backend
+                                                            </Link>
+                                                        </Button>
+                                                    )}
+                                                </>
+                                            ) : (
+                                                // Single repository project
                                       <Button
                                           size="sm"
                                           variant="outline"
-                                                    className="border-white/20 text-white hover:bg-white/10 bg-transparent w-full"
+                                                    className="border-white/20 text-white bg-transparent w-full"
                                           asChild
                                       >
                                                     <Link
@@ -1649,6 +1210,7 @@ export default function ResumeLanding() {
                                                         View Code
                                           </Link>
                                       </Button>
+                                            )}
                                   </div>
                               </CardContent>
                           </Card>
@@ -1663,7 +1225,7 @@ export default function ResumeLanding() {
                                           className="border-white/20 text-white hover:bg-white/10 bg-transparent"
                                           asChild
                                       >
-                                <Link href="https://github.com/rishabhgoel" target="_blank" className="flex items-center">
+                                <Link href="https://github.com/rgoel22?tab=repositories" target="_blank" className="flex items-center">
                                               <Github className="w-4 h-4 mr-2"/>
                                     View All Projects on GitHub
                                           </Link>
