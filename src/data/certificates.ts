@@ -1,4 +1,14 @@
-export const certificates = [
+export type Certificate = {
+    id: number;
+    title: string;
+    issuer: string;
+    date: string;
+    validUntil: string;
+    imageUrl: string;
+    verificationUrl?: string;
+}
+
+export const certificates : Certificate[] = [
     {
         id: 1,
         title: "AWS Solutions Architect Associate",

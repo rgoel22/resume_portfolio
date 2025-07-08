@@ -24,7 +24,7 @@ import Image from "next/image"
 import {useEffect, useState} from "react"
 import { experiences } from "@/data/experiences";
 import { projects } from "@/data/projects";
-import { certificates } from "@/data/certificates";
+import { Certificate, certificates } from "@/data/certificates";
 import { getTechColor, skillsData } from "@/data/tech-skills"
 
 export default function ResumeLanding() {
@@ -34,7 +34,7 @@ export default function ResumeLanding() {
   const [typingText, setTypingText] = useState("")
   const [hoveredExperience, setHoveredExperience] = useState<number | null>(null)
   const [hoveredCertificate, setHoveredCertificate] = useState<number | null>(null)
-  const [zoomedCertificate, setZoomedCertificate] = useState<any>(null)
+  const [zoomedCertificate, setZoomedCertificate] = useState<Certificate | null>(null)
 
     const aboutTexts = [
         "I'm an impact-driven Software Engineer with over 5 years of experience building scalable digital solutions across finance, e-commerce, and logistics. Specializing in full-stack development, cloud infrastructure, database architecture, and system optimization, I consistently deliver technologies that enhance performance, increase efficiency, and reduce operational costs. \n",
@@ -229,7 +229,7 @@ export default function ResumeLanding() {
     }
   }
 
-    const handleZoomCertificate = (certificate: never) => {
+    const handleZoomCertificate = (certificate: Certificate) => {
         setZoomedCertificate(certificate)
     }
 
@@ -1222,7 +1222,7 @@ export default function ResumeLanding() {
                                       <Button
                                           variant="outline"
                                 size="lg"
-                                          className="border-white/20 text-white hover:bg-white/10 bg-transparent"
+                                          className="border-white/20 text-white bg-transparent"
                                           asChild
                                       >
                                 <Link href="https://github.com/rgoel22?tab=repositories" target="_blank" className="flex items-center">
@@ -1238,10 +1238,10 @@ export default function ResumeLanding() {
               <section id="contact" className="py-20 relative z-10">
                   <div className="container mx-auto px-4 text-center">
                       <h3 className="text-3xl font-bold mb-4 bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
-                          Let's Work Together
+                          Let&apos;s Work Together
                       </h3>
                       <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-                          I'm always interested in new opportunities and exciting projects. Let's discuss how we can
+                          I&apos;m always interested in new opportunities and exciting projects. Let&apos;s discuss how we can
                           bring your
                           ideas to life.
                       </p>
