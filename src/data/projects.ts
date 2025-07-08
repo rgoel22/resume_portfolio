@@ -126,7 +126,7 @@ export const projects = [
         description: "Personal portfolio website showcasing projects and skills with modern design and animations.",
         imageUrl: "/images/projects/portfolio.png",
         technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
-        githubUrl: "https://github.com/yourusername/portfolio",
+        githubUrl: "https://github.com/rgoel22/resume_portfolio",
         category: "Frontend",
     },
 ]
