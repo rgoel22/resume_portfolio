@@ -3,6 +3,7 @@ const isGithubPages = process.env.NODE_ENV === 'production';
 const nextConfig = {
     output: 'export',
     assetPrefix: isGithubPages ? '/resume-portfolio/' : '',
+    basePath: isGithubPages ? '/resume_portfolio' : '',
     images: {
         unoptimized: true,
     },
