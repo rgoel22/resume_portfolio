@@ -3,7 +3,7 @@ export const projects = [
         id: 1,
         title: "PathShala",
         description: "Built Pathshala, a scalable e-learning platform delivering personalized education through interactive modules, real-time progress monitoring, and role-based access control. Leveraged modern web technologies to ensure high performance, accessibility, and an intuitive user experience.",
-        imageUrl: "${basePath}/images/projects/pathshala.jpg",
+        imageUrl: "/images/projects/pathshala.jpg",
         technologies: [
             "Spring Boot",
             "Java",
@@ -45,7 +45,7 @@ export const projects = [
         title: "GMV Prediction",
         description:
             "Developed an interactive prediction game enabling users to forecast annual Gross Merchandise Value (GMV) and order volumes. Featuring real-time leaderboard updates, the solution dynamically visualized user predictions and encouraged competitive engagement, enhancing data-driven decision-making and strategic insights.",
-        imageUrl: "${basePath}/images/projects/prediction.jpeg",
+        imageUrl: "/images/projects/prediction.jpeg",
         technologies: [
             "Spring Boot",
             "Java",
@@ -64,7 +64,7 @@ export const projects = [
         id: 3,
         title: "Doctor Office app",
         description: "A cloud-native microservices application for booking and managing doctor appointments, deployed on AWS EKS using Docker and Kubernetes. Implemented CI/CD with GitHub Actions, secure routing via AWS ACM & Route 53, and autoscaling with HPA for production-grade reliability.",
-        imageUrl: "${basePath}/images/projects/kubernetes.png",
+        imageUrl: "/images/projects/kubernetes.png",
         technologies: [
             "React.js",
             "Node.js",
@@ -94,7 +94,7 @@ export const projects = [
         title: "Monitoring EKS Cluster",
         description:
             "Modular Kubernetes setup with Helm, Prometheus monitoring, log health checks, and Jenkins CI/CD for OpenTelemetry demo webshop deployment.",
-        imageUrl: "${basePath}/images/projects/monitoring.png",
+        imageUrl: "/images/projects/monitoring.png",
         technologies: ["AWS", "GitHub Actions", "Kubernetes", "AWS EKS", "Helm", "Prometheus", "Amazon CloudWatch", "Cloud Formation"],
         githubUrl: "https://github.com/rgoel22/opentelemetry-demo",
         category: "Cloud Computing",
@@ -103,7 +103,7 @@ export const projects = [
         id: 5,
         title: "E-commerce Application",
         description: "Designed and deployed a secure, scalable e-commerce platform leveraging AWS cloud infrastructure. Implemented dynamic auto-scaling, load balancing, Amazon RDS for reliable database management, CloudFront CDN for optimized global content delivery, and robust security via AWS WAF and KMS encryption. Achieved high availability, performance efficiency, and protection against common web vulnerabilities.",
-        imageUrl: "${basePath}/images/projects/e-commerce.png",
+        imageUrl: "/images/projects/e-commerce.png",
         technologies: ["PHP", "AWS", "AWS RDBMS", "Cloud Formation", "Amazon CloudWatch", "AWS WAF"],
         githubUrl: "https://github.com/rgoel22/818N-E_Commerce_Application",
         category: "Cloud Computing",
@@ -115,7 +115,7 @@ export const projects = [
             "Built ForkLift, a scalable, multi-model database solution for a food delivery platform, integrating relational (MySQL) and document-oriented (MongoDB) databases. " +
             "Optimized transactional data management, flexible menu structures, and real-time delivery tracking." +
             " Enhanced user experience with dynamic content management and robust data integrity, ensuring high performance and scalability under peak loads.",
-        imageUrl: "${basePath}/images/projects/forklift.png",
+        imageUrl: "/images/projects/forklift.png",
         technologies: ["MongoDB", "MySQL", "NoSQL", "Database Design & Architecture",],
         githubUrl: "https://github.com/rgoel22/forklift",
         category: "Database",
@@ -124,7 +124,7 @@ export const projects = [
         id: 7,
         title: "Portfolio Website",
         description: "Personal portfolio website showcasing projects and skills with modern design and animations.",
-        imageUrl: "${basePath}/images/projects/portfolio.png",
+        imageUrl: "/images/projects/portfolio.png",
         technologies: ["Next.js", "Framer Motion", "Tailwind CSS", "TypeScript"],
         githubUrl: "https://github.com/yourusername/portfolio",
         category: "Frontend",

@@ -453,7 +453,7 @@ export default function ResumeLanding() {
                 }}
             >
               <Image
-                  src="${basePath}/images/profile.jpeg"
+                  src="/images/profile.jpeg"
                   alt="Rishabh Goel - Profile"
                   width={300}
                   height={300}
@@ -573,7 +573,7 @@ export default function ResumeLanding() {
                                           <div
                                               className="w-16 h-16 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2">
                                               <Image
-                                                  src="${basePath}/images/umd.png"
+                                                  src="/images/umd.png"
                                                   alt="University of Maryland Logo"
                                                   width={48}
                                                   height={48}
@@ -641,7 +641,7 @@ export default function ResumeLanding() {
                                           <div
                                               className="w-16 h-16 bg-white rounded-full flex items-center justify-center flex-shrink-0 p-2">
                                               <Image
-                                                  src="${basePath}/images/bvp.png"
+                                                  src="/images/bvp.png"
                                                   alt="Bharati Vidyapeeth Logo"
                                                   width={48}
                                                   height={48}

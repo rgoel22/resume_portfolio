@@ -15,7 +15,7 @@ export const certificates : Certificate[] = [
         issuer: "Amazon Web Services",
         date: "Jun 2025",
         validUntil: "Jun 2028",
-        imageUrl: "${basePath}/images/certificates/aws-certificate.png",
+        imageUrl: "/images/certificates/aws-certificate.png",
         verificationUrl: "https://www.credly.com/badges/3ce92f5d-e303-426c-b987-4819e9b97d29",
     },
     {
@@ -24,7 +24,7 @@ export const certificates : Certificate[] = [
         issuer: "Udemy",
         date: "May 2021",
         validUntil: " - ",
-        imageUrl: "${basePath}/images/certificates/pl-sql.png",
+        imageUrl: "/images/certificates/pl-sql.png",
         verificationUrl: "https://www.udemy.com/certificate/UC-5e1af506-45c7-4e0d-bc22-798ee25f6610/",
     },
     {
@@ -33,7 +33,7 @@ export const certificates : Certificate[] = [
         issuer: "Udemy",
         date: "Jul 2020",
         validUntil: " - ",
-        imageUrl: "${basePath}/images/certificates/javascript.png",
+        imageUrl: "/images/certificates/javascript.png",
         verificationUrl: "https://www.udemy.com/certificate/UC-427c3f0f-6d4f-4338-bf9b-7e119548a458/",
     },
     {
@@ -42,7 +42,7 @@ export const certificates : Certificate[] = [
         issuer: "Udemy",
         date: "Sep 2024",
         validUntil: " - ",
-        imageUrl: "${basePath}/images/certificates/spring.png",
+        imageUrl: "/images/certificates/spring.png",
         verificationUrl: "https://www.udemy.com/certificate/UC-IDNIF94P/",
     },
     {
@@ -51,7 +51,7 @@ export const certificates : Certificate[] = [
         issuer: "HCL",
         date: "Apr 2016",
         validUntil: " - ",
-        imageUrl: "${basePath}/images/certificates/ad java_1.jpg",
+        imageUrl: "/images/certificates/ad java_1.jpg",
     },
     {
         id: 6,
@@ -59,7 +59,7 @@ export const certificates : Certificate[] = [
         issuer: "HCL",
         date: "Mar 2016",
         validUntil: " - ",
-        imageUrl: "${basePath}/images/certificates/c&c++_1.jpg",
+        imageUrl: "/images/certificates/c&c++_1.jpg",
     },
     {
         id: 7,
@@ -67,6 +67,6 @@ export const certificates : Certificate[] = [
         issuer: "HCL",
         date: "Jan 2016",
         validUntil: " - ",
-        imageUrl: "${basePath}/images/certificates/core java_1.jpg",
+        imageUrl: "/images/certificates/core java_1.jpg",
     },
 ]
