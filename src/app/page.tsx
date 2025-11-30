@@ -31,18 +31,18 @@ import { getTechColor, skillsData } from "@/data/tech-skills"
 export default function ResumeLanding() {
   const [scrollY, setScrollY] = useState(0)
   const [activeSection, setActiveSection] = useState("hero")
-  const [aboutTextVisible, setAboutTextVisible] = useState(false)
-  const [typingText, setTypingText] = useState("")
+  // const [aboutTextVisible, setAboutTextVisible] = useState(false)
+  // const [typingText, setTypingText] = useState("")
   const [hoveredExperience, setHoveredExperience] = useState<number | null>(null)
   const [hoveredCertificate, setHoveredCertificate] = useState<number | null>(null)
   const [zoomedCertificate, setZoomedCertificate] = useState<Certificate | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
     const aboutTexts = [
-        "I'm an impact-driven Software Engineer with over 5 years of experience building scalable digital solutions across finance, e-commerce, and logistics. Specializing in full-stack development, cloud infrastructure, database architecture, and system optimization, I consistently deliver technologies that enhance performance, increase efficiency, and reduce operational costs. \n",
-        "I recently completed my Master of Engineering in Software Engineering with a Graduate Certification in Cloud Engineering from the University of Maryland, where I honed my skills in modern web technologies and user experience design. \n",
-        "Outside of coding, I enjoy exploring new technologies, contributing to open-source projects, and actively engaging with the developer community through blog posts and speaking engagements. \n",
-        "I believe in writing clean, maintainable code and creating applications that not only function effectively but also deliver exceptional user experiences. I am committed to continuous learning and passionate about using technology to solve real-world problems. \n",
+        "I'm an impact-driven Software Engineer with over 5 years of experience building scalable digital solutions across finance, e-commerce, and logistics. Specializing in full-stack development, cloud infrastructure, database architecture, and system optimization, I consistently deliver technologies that enhance performance, increase efficiency, and reduce operational costs.",
+        "I recently completed my Master of Engineering in Software Engineering with a Graduate Certification in Cloud Engineering from the University of Maryland, where I honed my skills in modern web technologies and user experience design.",
+        "Outside of coding, I enjoy exploring new technologies, contributing to open-source projects, and actively engaging with the developer community through blog posts and speaking engagements.",
+        "I believe in writing clean, maintainable code and creating applications that not only function effectively but also deliver exceptional user experiences. I am committed to continuous learning and passionate about using technology to solve real-world problems.",
     ]
 
     useEffect(() => {
@@ -98,49 +98,49 @@ export default function ResumeLanding() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  useEffect(() => {
-    // Trigger typing effect when about section comes into view
-    const aboutElement = document.getElementById("about")
-    if (aboutElement && !aboutTextVisible) {
-      const observer = new IntersectionObserver(
-          (entries) => {
-            if (entries[0].isIntersecting) {
-              setAboutTextVisible(true)
-              let currentTextIndex = 0
-              let currentCharIndex = 0
-              let currentText = ""
-
-              const typeText = () => {
-                if (currentTextIndex < aboutTexts.length) {
-                  if (currentCharIndex < aboutTexts[currentTextIndex].length) {
-                    currentText += aboutTexts[currentTextIndex][currentCharIndex]
-                    setTypingText(currentText + "|")
-                    currentCharIndex++
-                    setTimeout(typeText, 20)
-                  } else {
-                    currentText += " "
-                    currentTextIndex++
-                    currentCharIndex = 0
-                    if (currentTextIndex < aboutTexts.length) {
-                      setTimeout(typeText, 500)
-                    } else {
-                      setTypingText(currentText)
-                    }
-                  }
-                }
-              }
-
-              typeText()
-              observer.disconnect()
-            }
-          },
-          { threshold: 0.5 },
-      )
-
-      observer.observe(aboutElement)
-      return () => observer.disconnect()
-    }
-  }, [aboutTextVisible])
+  // useEffect(() => {
+  //   // Trigger typing effect when about section comes into view
+  //   const aboutElement = document.getElementById("about")
+  //   if (aboutElement && !aboutTextVisible) {
+  //     const observer = new IntersectionObserver(
+  //         (entries) => {
+  //           if (entries[0].isIntersecting) {
+  //             setAboutTextVisible(true)
+  //             let currentTextIndex = 0
+  //             let currentCharIndex = 0
+  //             let currentText = ""
+  //
+  //             const typeText = () => {
+  //               if (currentTextIndex < aboutTexts.length) {
+  //                 if (currentCharIndex < aboutTexts[currentTextIndex].length) {
+  //                   currentText += aboutTexts[currentTextIndex][currentCharIndex]
+  //                   setTypingText(currentText + "|")
+  //                   currentCharIndex++
+  //                   setTimeout(typeText, 20)
+  //                 } else {
+  //                   currentText += " "
+  //                   currentTextIndex++
+  //                   currentCharIndex = 0
+  //                   if (currentTextIndex < aboutTexts.length) {
+  //                     setTimeout(typeText, 500)
+  //                   } else {
+  //                     setTypingText(currentText)
+  //                   }
+  //                 }
+  //               }
+  //             }
+  //
+  //             typeText()
+  //             observer.disconnect()
+  //           }
+  //         },
+  //         { threshold: 0.5 },
+  //     )
+  //
+  //     observer.observe(aboutElement)
+  //     return () => observer.disconnect()
+  //   }
+  // }, [aboutTextVisible])
 
     // Handle escape key to close zoom modal
     useEffect(() => {
@@ -467,7 +467,8 @@ export default function ResumeLanding() {
                           alt="Rishabh Goel - Profile"
                           width={300}
                           height={300}
-                            className="rounded-2xl shadow-2xl border-4 border-white/30 object-cover"
+                          priority
+                          className="rounded-2xl shadow-2xl border-4 border-white/30 object-cover"
                       />
                       <div
                           className="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent rounded-2xl opacity-100"/>
@@ -548,13 +549,9 @@ export default function ResumeLanding() {
                           About Me
                       </h3>
                       <div className="space-y-4 text-white-300 mb-8 sm:mb-12">
-                          {aboutTextVisible ? (
-                              <p className="whitespace-pre-line leading-relaxed text-base sm:text-lg">{typingText}</p>
-                          ) : (
-                              <div className="h-24 sm:h-32 flex items-center justify-center">
-                                  <div className="animate-pulse text-gray-500">Loading...</div>
-                              </div>
-                          )}
+                          <p className="whitespace-pre-line leading-relaxed text-base sm:text-lg text-left text-justify">
+                              {aboutTexts.join("\n\n")}
+                          </p>
                       </div>
                   </div>
               </div>
@@ -764,7 +761,17 @@ export default function ResumeLanding() {
                                                   <div
                                                       className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${exp.color} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300`}
                                                   >
-                                                      <Briefcase className={`w-6 h-6 sm:w-8 sm:h-8 ${exp.textColor}`}/>
+                                                      {exp.image ? (
+                                                          <Image
+                                                              src={exp.image}
+                                                              alt={exp.company}
+                                                              width={64}
+                                                              height={64}
+                                                              className="w-full h-full object-contain"
+                                                          />
+                                                      ) : (
+                                                          <Briefcase className={`w-6 h-6 sm:w-8 sm:h-8 ${exp.textColor}`} />
+                                                      )}
                                                   </div>
                                                   <div className="flex-1 min-w-0">
                                                       <h4 className="font-bold text-white text-xl sm:text-2xl mb-2 group-hover:text-purple-300 transition-colors">

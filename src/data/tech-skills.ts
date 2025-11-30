@@ -70,6 +70,8 @@ const techCategories = {
             "AWS EKS",
             "AWS ECS",
             "CloudWatch",
+            "Apigee",
+            "Terraform"
         ],
         color: "bg-green-500/20 text-green-200 border-green-500/30",
     },

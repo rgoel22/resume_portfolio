@@ -1,5 +1,22 @@
 export const experiences = [
     {
+        title: "Technical Lead",
+        company: "HCL Technologies",
+        period: "Aug 2025 - Current",
+        location: "College Park, MD",
+        technologies: ["Java", "Spring Boot", "Terraform", "Azure", "Apigee", "Angular", "MySQL"],
+        responsibilities: [
+            "Modernized BCBS RI’s legacy claims and member service APIs by architecting secure Java/Spring Boot microservices on AWS, delivering a measurable 35% improvement in API response times for 200K+ members",
+            "Led end-to-end development of a consumer-centric Developer Portal enabling partners and internal teams to seamlessly discover BCBSRI’s API catalogue, resulting in faster onboarding and improved integration efficiency.",
+            "Designed and implemented secure application registration, API subscription, and access-request workflows using Java/Spring Boot, OAuth 2.0, and API Gateway, reducing manual integration steps by 40%.",
+            "Optimized backend service performance for catalogue discovery and access management, achieving 35% faster response times through caching, query tuning and microservices refinements."
+        ],
+        image: "/images/HCL.jpeg",
+        color: "from-blue-600/20 to-cyan-600/20",
+        textColor: "text-blue-400",
+        borderColor: "border-blue-500",
+        bgColor: "bg-blue-500/10",
+    },{
         title: "Graduate Teaching Assistant",
         company: "University of Maryland",
         period: "Jan 2025 - May 2025",
@@ -10,6 +27,7 @@ export const experiences = [
             "Evaluated & Designed assignments and exams, providing detailed and constructive feedback to improve student outcomes.",
             "Assisted the professor in managing and enhancing course materials while streamlining communication, ensuring seamless access and fostering a collaborative learning environment.",
         ],
+        image: "/images/umd.png",
         color: "from-purple-600/20 to-pink-600/20",
         textColor: "text-purple-400",
         borderColor: "border-purple-500",
@@ -41,6 +59,7 @@ export const experiences = [
         textColor: "text-blue-400",
         borderColor: "border-blue-500",
         bgColor: "bg-blue-500/10",
+        image: "/images/umd.png",
     },
     {
         title: "Software-Engineer Full Stack Intern",
@@ -72,6 +91,7 @@ export const experiences = [
         textColor: "text-purple-400",
         borderColor: "border-purple-500",
         bgColor: "bg-purple-500/10",
+        image: "/images/nix.png",
     },
     {
         title: "Consultant",
@@ -112,6 +132,7 @@ export const experiences = [
         textColor: "text-blue-400",
         borderColor: "border-blue-500",
         bgColor: "bg-blue-500/10",
+        image: "/images/intellect.png",
     },
     {
         title: "Associate Software Engineer",
@@ -140,6 +161,7 @@ export const experiences = [
         textColor: "text-purple-400",
         borderColor: "border-purple-500",
         bgColor: "bg-purple-500/10",
+        image: "/images/sunrich-tech-logo.png",
     },
     {
         title: "Project Trainee",
@@ -158,5 +180,6 @@ export const experiences = [
         textColor: "text-blue-400",
         borderColor: "border-blue-500",
         bgColor: "bg-blue-500/10",
+        image: "/images/systems-plus.png",
     },
 ]
